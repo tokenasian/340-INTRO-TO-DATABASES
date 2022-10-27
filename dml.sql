@@ -19,6 +19,16 @@ DELETE FROM Itineraries WHERE passenger_id = :idInput;
 -- Update Passenger Information 
 UPDATE Passenger SET first_nameInput = :first_nameInput, last_name = :last_nameInput, passport = passportInput email = :emailInput, phone_number = :phone_numberInput WHERE id = :idInput;
 
+-- Add data into Airports table
+INSERT INTO Airports (airport_name, airport_location) VALUES (:airport_nameInput, :airport_locationiNPUT;
+
+-- Delete data from Airports  
+DELETE FROM Airports WHERE id = :airport_idInput;
+
+-- Update Flights data
+UPDATE Airports SET airport_name = :airport_nameInput, airport_location = :airport_locationiNPUT WHERE id = airport_idInput;
+
+
 -- Add data into Flights table
 INSERT INTO Flights (departure_airport, arrival_airport, departure_time, arrival_time, air_fare, capacity) VALUES (:departure_airportInput, :arrival_airportInput, :departure_timeInput, 
 :arrival_timeInput, :air_fareInput, :capacityInput);
@@ -26,7 +36,6 @@ INSERT INTO Flights (departure_airport, arrival_airport, departure_time, arrival
 -- Delete data from Flights 
 DELETE FROM Flights WHERE id = :flight_idInput;
 
--- Update Flights data
 -- Update Flights data
 UPDATE Flights SET departure_airport = :departure_airportInput, arrival_airport = :arrival_airportInput, departure_time = :departure_airportInput, 
 arrival_time = :arrival_timeInput, air_fare = :air_fareInput, capacity = :capacityInput WHERE id = flight_idInput;
