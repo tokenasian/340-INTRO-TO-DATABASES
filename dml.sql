@@ -20,7 +20,7 @@ DELETE FROM Itineraries WHERE passenger_id = :idInput;
 UPDATE Passenger SET first_nameInput = :first_nameInput, last_name = :last_nameInput, passport = passportInput email = :emailInput, phone_number = :phone_numberInput WHERE id = :idInput;
 
 -- Add data into Airports table
-INSERT INTO Airports (airport_name, airport_location) VALUES (:airport_nameInput, :airport_locationiNPUT;
+INSERT INTO Airports (airport_name, airport_location) VALUES (:airport_nameInput, :airport_locationInput;
 
 -- Delete data from Airports  
 DELETE FROM Airports WHERE id = :airport_idInput;
