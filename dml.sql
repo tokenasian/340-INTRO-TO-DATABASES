@@ -27,8 +27,9 @@ INSERT INTO Flights (departure_airport, arrival_airport, departure_time, arrival
 DELETE FROM Flights WHERE id = :flight_idInput;
 
 -- Update Flights data
+-- Update Flights data
 UPDATE Flights SET departure_airport = :departure_airportInput, arrival_airport = :arrival_airportInput, departure_time = :departure_airportInput, 
-arrival_time = :arrival_timeInput, air_fare = :air_fareInput WHERE id = flight_idInput;
+arrival_time = :arrival_timeInput, air_fare = :air_fareInput, capacity = :capacityInput WHERE id = flight_idInput;
 
 -- Delete an itinerary by trip_name
 DELETE FROM Itineraries WHERE trip_name = :trip_nameInput;
