@@ -1,45 +1,62 @@
 -- Query for add a new character functionality with colon : character being used to 
 -- denote the variables that will have data from the backend programming language
 
--- Select all the passengers in the Passengers table
+-- -----------------------------------------------------
+-- Passengers
+-- -----------------------------------------------------
+
+-- SELECT all the passengers in the Passengers table
 SELECT * FROM Passengers;
 
--- Add a passenger in the Passengers table
+-- ADD passengers to the Passengers table
 INSERT INTO Passengers (first_name, last_name, passport, email, phone_number) VALUES (:first_nameInput,:last_nameInput, :passportInput, :emailInput, :phone_numberInput);
 
--- Search for passengers with last name
+-- SEARCH for passengers by last name
 SELECT * FROM Passengers WHERE last_name LIKE :last_nameInput;
 
--- Delete a passenger 
+-- DELETE passengers from the Passengers table
 DELETE FROM Passengers WHERE passenger_id = :idInput;
 
--- Delete a passenger from Itineraries
+-- DELETE passengers from the Itineraries
 DELETE FROM Itineraries WHERE passenger_id = :idInput;
 
--- Update Passenger Information 
-UPDATE Passenger SET first_nameInput = :first_nameInput, last_name = :last_nameInput, passport = passportInput email = :emailInput, phone_number = :phone_numberInput WHERE id = :idInput;
+-- UPDATE passengers Information 
+UPDATE Passenger SET first_nameInput = :first_nameInput, last_name = :last_nameInput, passport = passportInput, email = :emailInput, phone_number = :phone_numberInput WHERE id = :idInput;
 
--- Add data into Airports table
-INSERT INTO Airports (airport_name, airport_location) VALUES (:airport_nameInput, :airport_locationInput;
+-- -----------------------------------------------------
+-- Airports
+-- -----------------------------------------------------
 
--- Delete data from Airports  
+-- ADD data to Airports table
+INSERT INTO Airports (airport_name, airport_location) VALUES (:airport_nameInput, :airport_locationInput);
+
+-- DELETE data from the Airports table
 DELETE FROM Airports WHERE id = :airport_idInput;
 
--- Update Flights data
-UPDATE Airports SET airport_name = :airport_nameInput, airport_location = :airport_locationiNPUT WHERE id = airport_idInput;
+-- SEARCH for Airports by airport name
+SELECT * FROM Airports WHERE airport_name LIKE :airport_nameInput;
 
+-- UPDATE data in the Airports table
+UPDATE Airports SET airport_name = :airport_nameInput, airport_location = :airport_locationInput where id = :airport_idInput
 
--- Add data into Flights table
+-- -----------------------------------------------------
+-- Flights
+-- -----------------------------------------------------
+
+-- ADD data into Flights table
 INSERT INTO Flights (departure_airport, arrival_airport, departure_time, arrival_time, air_fare, capacity) VALUES (:departure_airportInput, :arrival_airportInput, :departure_timeInput, 
 :arrival_timeInput, :air_fareInput, :capacityInput);
 
--- Delete data from Flights 
+-- DELETE data from Flights table
 DELETE FROM Flights WHERE id = :flight_idInput;
 
--- Update Flights data
+-- UPDATE Flights data
 UPDATE Flights SET departure_airport = :departure_airportInput, arrival_airport = :arrival_airportInput, departure_time = :departure_airportInput, 
 arrival_time = :arrival_timeInput, air_fare = :air_fareInput, capacity = :capacityInput WHERE id = flight_idInput;
 
--- Delete an itinerary by trip_name
-DELETE FROM Itineraries WHERE trip_name = :trip_nameInput;
+-- -----------------------------------------------------
+-- Itinerary
+-- -----------------------------------------------------
 
+-- DELETE an itinerary by trip_name
+DELETE FROM Itineraries WHERE trip_name = :trip_nameInput;
