@@ -41,7 +41,6 @@ app.post('/passengers/add', (req, res) => {
     })
 })
 
-// CREATE controller *********************************************************
 // Add New Passenger
 app.post('/airports/add', (req, res) => {
     const airport_id = req.body.airport_id
@@ -49,9 +48,27 @@ app.post('/airports/add', (req, res) => {
     const airport_location = req.body.airport_location
 
     const sql_insert = 
-        'INSERT INTO Airports (airport_id, airport_name, airport_location) VALUES (?,?,?,?,?)'
+        'INSERT INTO Airports (airport_id, airport_name, airport_location) VALUES (?,?,?)'
 
     db.query(sql_insert, [airport_id, airport_name, airport_location], (err, result) => {
+        if (err) {
+            console.log(err)
+            res.sendStatus(400)
+        } else{
+            res.sendStatus(201)
+        }
+    })
+})
+
+// Add New Class
+app.post('/ticket-classes/add', (req, res) => {
+    const class_name = req.body.class_name
+    const upgrade_charge = req.body.upgrade_charge
+
+    const sql_insert = 
+        'INSERT INTO Ticket_Classes (class_name, upgrade_charge) VALUES (?,?)'
+
+    db.query(sql_insert, [class_name, upgrade_charge], (err, result) => {
         if (err) {
             console.log(err)
             res.sendStatus(400)
@@ -133,7 +150,6 @@ app.put('/passengers/:id', (req, res) => {
     })
 })
 
-// UPDATE controller *********************************************************
 // UPDATE Airport
 app.put('/airports/:id', (req, res) => {
     const id = req.params.id
@@ -154,6 +170,24 @@ app.put('/airports/:id', (req, res) => {
 })
 
 
+// UPDATE Airport
+app.put('/ticket-classes/:id', (req, res) => {
+    const class_name = req.body.class_name
+    const upgrade_charge = req.body.upgrade_charge
+    const sqlUpdate = 
+        "UPDATE Airports SET class_name = ?, upgrade_charge = ? WHERE class_id = ?"
+    
+    db.query(sqlUpdate, [class_name, upgrade_charge, id], (err, result) => {
+        if (result.affectedRows === 0) {
+            console.log(err)
+            res.sendStatus(404)
+        } else{
+            console.log(result)
+            res.sendStatus(200)
+        }
+    })
+})
+
 // DELETE controller *********************************************************
 // DELETE Passenger
 app.delete('/passengers/:id', (req, res) => {
@@ -170,24 +204,6 @@ app.delete('/passengers/:id', (req, res) => {
         }
     })
 })
-
-// DELETE controller *********************************************************
-// DELETE Airport
-app.delete('/airports/:id', (req, res) => {
-    const id = req.params.id
-    const sqlDelete = "DELETE FROM Airports WHERE airport_id = ?"
-    db.query(sqlDelete, id, (err, result) => {
-
-        if (result.affectedRows === 0) {
-            console.log(err)
-            res.sendStatus(404)
-        } else{
-            console.log(result)
-            res.sendStatus(204)
-        }
-    })
-})
-
 
 
 /*
